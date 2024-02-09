@@ -18,7 +18,7 @@ export async function POST(request: Request) {
 
     // Get the ID and type
     const eventType = event.type
-
+    console.log(event.data.object)
     // CREATE
     if (eventType === 'checkout.session.completed') {
         const { id, amount_total, metadata } = event.data.object
@@ -30,6 +30,7 @@ export async function POST(request: Request) {
             totalAmount: amount_total ? (amount_total / 100).toString() : '0',
             createdAt: new Date(),
         }
+        console.log(order)
 
         const newOrder = await createOrder(order)
         return NextResponse.json({ message: 'OK', order: newOrder })

@@ -1,6 +1,5 @@
 import EventForm from '@/components/shared/EventForm'
 import { auth } from '@clerk/nextjs'
-import React from 'react'
 
 const CreateEvent = () => {
     const { sessionClaims } = auth()
